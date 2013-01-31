@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:tal="http://xml.zope.org/namespaces/tal">
+<head>
+  <title>vifex</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <meta name="keywords" content="python web application" />
+  <meta name="description" content="pyramid web application" />
+  <link rel="shortcut icon" href="${request.static_url('vifex:static/favicon.ico')}" />
+  <link rel="stylesheet" href="${request.static_url('vifex:static/pylons.css')}" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="http://static.pylonsproject.org/fonts/nobile/stylesheet.css" media="screen" />
+  <link rel="stylesheet" href="http://static.pylonsproject.org/fonts/neuton/stylesheet.css" media="screen" />
+  <!--[if lte IE 6]>
+  <link rel="stylesheet" href="${request.static_url('vifex:static/ie6.css')}" type="text/css" media="screen" charset="utf-8" />
+  <![endif]-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#go-btn").click(load_content);
+    });
+
+    function load_content() {
+      $("#dyn-content")
+       .load("/content",null,function(content)
+         { $(this).hide().fadeIn("slow"); return false; });
+    }
+  </script>
+
+</head>
+
+<body>
+  <div id="wrap">
+    <div id="top">
+      <div class="top align-center">
+        <h1>VIsual suFEX</h1>
+      </div>
+    </div>
+    <div id="middle">
+      <div class="middle align-center">
+        <form>
+        <p class="app-welcome">
+          Please enter a query here: <input type="text" id="query" name="query" value="" />
+          <input type="button" id="go-btn" value="Go" onclick="go();" />
+        </p>
+        </form>
+        <div id="dyn-content">not yet</div>
+      </div>
+    </div>
+    <div id="bottom">
+      <div class="bottom">
+      </div>
+    </div>
+  </div>
+  <div id="footer">
+    <div class="footer">&copy; Copyright 2008-${year}, Johannes Goller</div>
+  </div>
+</body>
+</html>
